@@ -36,7 +36,8 @@
 ## 目前gemini2.5这个模型无法使用，还没有找到原因，其他模型都可以正常使用。
 
 ![image](https://github.com/user-attachments/assets/72b44737-fe06-43b1-a943-117fb10923c0)
-![image](https://github.com/user-attachments/assets/edd87a61-d5fb-4b3e-9b45-c9902c472b87)
+![image](https://github.com/user-attachments/assets/b70fb167-340d-4bb9-a09e-fba142063c37)
+
 
 ## 使用指南
 
