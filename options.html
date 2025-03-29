@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gemini OCR Extension Settings</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #1a73e8;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    input[type="text"]:focus, select:focus {
+      border-color: #1a73e8;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+    }
+    .api-key-input {
+      position: relative;
+    }
+    .toggle-visibility {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+      color: #666;
+      background: none;
+      border: none;
+      font-size: 14px;
+    }
+    button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #0d62c8;
+    }
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    .success {
+      background-color: #e6f4ea;
+      color: #1e8e3e;
+      display: block;
+    }
+    .error {
+      background-color: #fce8e6;
+      color: #d93025;
+      display: block;
+    }
+    .info-box {
+      background-color: #f8f9fa;
+      border-left: 4px solid #1a73e8;
+      padding: 12px;
+      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .model-description {
+      font-size: 13px;
+      color: #5f6368;
+      margin-top: 5px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <h1>OCR Extension Settings</h1>
+  
+  <div class="form-group">
+    <label for="api-provider">API Provider</label>
+    <select id="api-provider">
+      <option value="gemini">Google Gemini</option>
+      <option value="qwen">Alibaba Qwen (通义千问)</option>
+    </select>
+    <div class="model-description">
+      Select which AI service provider to use for OCR processing
+    </div>
+  </div>
+
+  <!-- Gemini API Settings (shown when Gemini is selected) -->
+  <div id="gemini-settings">
+    <div class="form-group">
+      <label for="gemini-api-key">Gemini API Key</label>
+      <div class="api-key-input">
+        <input type="text" id="gemini-api-key" placeholder="Enter your Gemini API Key">
+        <button class="toggle-visibility" id="gemini-toggle-visibility">Show</button>
+      </div>
+      <div class="model-description">
+        Get your API key from <a href="https://aistudio.google.com/apikey" target="_blank">Google AI Studio</a>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="gemini-model-selection">Gemini Model Selection</label>
+      <select id="gemini-model-selection">
+        <option value="gemini-2.5-pro-exp-03-25">Gemini 2.5 Pro Experimental - Most advanced model</option>
+        <option value="gemini-2.0-flash">Gemini 2.0 Flash - Latest features, best performance</option>
+        <option value="gemini-2.0-flash-lite">Gemini 2.0 Flash-Lite - Faster, cost-effective</option>
+        <option value="gemini-1.5-flash">Gemini 1.5 Flash - Fast, balanced performance</option>
+        <option value="gemini-1.5-pro">Gemini 1.5 Pro - Higher quality, slower</option>
+      </select>
+      <div class="model-description">
+        Different models offer trade-offs between speed, accuracy, and features. Gemini 2.5 Pro Experimental is the most advanced model with highest accuracy, while Gemini 1.5 Flash offers a good balance for everyday OCR tasks.
+      </div>
+    </div>
+  </div>
+
+  <!-- Qwen API Settings (hidden by default, shown when Qwen is selected) -->
+  <div id="qwen-settings" style="display: none;">
+    <div class="form-group">
+      <label for="qwen-api-key">Qwen API Key</label>
+      <div class="api-key-input">
+        <input type="text" id="qwen-api-key" placeholder="Enter your Qwen API Key">
+        <button class="toggle-visibility" id="qwen-toggle-visibility">Show</button>
+      </div>
+      <div class="model-description">
+        Get your API key from <a href="https://bailian.console.aliyun.com" target="_blank">Alibaba Cloud Bailian Platform</a>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="qwen-model-selection">Qwen Model Selection</label>
+      <select id="qwen-model-selection">
+        <option value="qwen-vl-ocr">Qwen VL OCR (Standard)</option>
+        <option value="qwen-vl-ocr-latest">Qwen VL OCR Latest (Most Recent)</option>
+      </select>
+      <div class="model-description">
+        Qwen OCR models are specialized for document text extraction with multi-language support, including Chinese, English, French, Japanese, Korean, German, Russian, Italian, Vietnamese, and Arabic.
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <button id="save-button">Save Settings</button>
+  
+  <div id="status" class="status"></div>
+  
+  <div class="info-box">
+    <p><strong>Using your API key:</strong> Your API keys are stored locally in your browser and are only sent to the respective API servers when performing OCR. We never collect or store your API keys on our servers.</p>
+    <p><strong>Usage limits:</strong> Please be aware that using these APIs may count against your API quota:</p>
+    <ul>
+      <li>For Gemini API limits, check <a href="https://ai.google.dev/gemini-api/docs/rate-limits" target="_blank">Google's documentation</a>.</li>
+      <li>For Qwen API limits, check <a href="https://help.aliyun.com/zh/model-studio/developer-reference/rate-limit" target="_blank">Alibaba Cloud's documentation</a>.</li>
+    </ul>
+    <p><strong>Model notes:</strong></p>
+    <ul>
+      <li>Gemini models: The Gemini 2.5 Pro Experimental model has superior OCR capabilities but may consume more tokens. For frequent everyday use, Gemini 1.5 Flash may be more economical.</li>
+      <li>Qwen models: The Qwen VL OCR model is specialized for document text extraction with support for multiple languages including Chinese, English, and others.</li>
+    </ul>
+  </div>
+  
+  <script src="options.js"></script>
+</body>
+</html>

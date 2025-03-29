@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gemini OCR</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: sans-serif;
+      width: 350px; /* Adjust width as needed */
+      padding: 10px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    #result-area {
+      width: 100%;
+      min-height: 100px;
+      border: 1px solid #ccc;
+      padding: 5px;
+      margin-bottom: 10px;
+      white-space: pre-wrap; /* Preserve whitespace and wrap text */
+      word-wrap: break-word;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    #status-area {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 10px;
+      min-height: 1.2em; /* Reserve space */
+    }
+    .model-info {
+      display: inline-block;
+      margin-left: 5px;
+      font-size: 12px;
+      color: #1a73e8;
+      background-color: #e8f0fe;
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+    button {
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+    #upload-label {
+        cursor: pointer;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+    }
+    #upload-label:hover {
+        background-color: #eee;
+    }
+    #file-upload {
+        display: none; /* Hide the actual file input */
+    }
+    
+    /* Toggle Switch Styles */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 20px;
+    }
+    
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 14px;
+      width: 14px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background-color: #1a73e8;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(16px);
+    }
+    
+    .slider.round {
+      border-radius: 34px;
+    }
+    
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <h3>Multi-Model OCR Result:</h3>
+  <div id="status-area">Ready. Use Ctrl+Shift+X (Mac: ⌘+Shift+X) to screenshot or upload an image.</div>
+  <div id="result-area" contenteditable="false"></div> 
+  
+  <div class="button-container">
+    <button id="copy-button">Copy Text</button>
+    <label for="file-upload" id="upload-label">Upload Image</label>
+    <input type="file" id="file-upload" accept="image/*">
+  </div>
+  
+  <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+    <div id="model-selector" style="display: flex; flex-direction: column; margin-top: 10px;">
+      <div id="provider-info" style="font-size: 12px; margin-bottom: 5px;">Provider: <span id="provider-name">Gemini</span></div>
+      <div style="display: flex; align-items: center;">
+        <span style="margin-right: 5px;">Speed Mode:</span>
+        <label class="switch">
+          <input type="checkbox" id="model-toggle">
+          <span class="slider round"></span>
+        </label>
+        <span style="margin-left: 5px;">Accuracy Mode</span>
+      </div>
+    </div>
+    <a href="#" id="open-options">Options</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

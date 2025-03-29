@@ -1,0 +1,13 @@
+# 这个文件定义了代码审查者和所有者
+# 每次创建Pull Request时，会自动要求下列人员进行审核
+# 请将下面的用户名替换为实际的GitHub用户名
+
+# 默认所有者（适用于整个仓库）
+* @YourGitHubUsername
+
+# 特定文件/目录的所有者
+/background.js @YourGitHubUsername
+/popup.* @YourGitHubUsername
+/options.* @YourGitHubUsername
+/content_script.js @YourGitHubUsername
+/qwen_ocr.js @YourGitHubUsername
