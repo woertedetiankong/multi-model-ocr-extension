@@ -33,7 +33,10 @@
 3. 开启右上角的"开发者模式"
 4. 点击"加载已解压的扩展程序"
 5. 直接点击根目录这个文件夹就可以了。
+## 目前gemini2.5这个模型无法使用，还没有找到原因，其他模型都可以正常使用。
+
 ![image](https://github.com/user-attachments/assets/72b44737-fe06-43b1-a943-117fb10923c0)
+![image](https://github.com/user-attachments/assets/edd87a61-d5fb-4b3e-9b45-c9902c472b87)
 
 ## 使用指南
 
