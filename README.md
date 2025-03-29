@@ -32,7 +32,8 @@
 2. 打开Chrome浏览器，访问`chrome://extensions/`
 3. 开启右上角的"开发者模式"
 4. 点击"加载已解压的扩展程序"
-5. 选择包含manifest.json的目录
+5. 直接点击根目录这个文件夹就可以了。
+![image](https://github.com/user-attachments/assets/72b44737-fe06-43b1-a943-117fb10923c0)
 
 ## 使用指南
 
