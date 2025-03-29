@@ -3,11 +3,11 @@
 # 请将下面的用户名替换为实际的GitHub用户名
 
 # 默认所有者（适用于整个仓库）
-* @YourGitHubUsername
+* @woertedetiankong
 
 # 特定文件/目录的所有者
-/background.js @YourGitHubUsername
-/popup.* @YourGitHubUsername
-/options.* @YourGitHubUsername
-/content_script.js @YourGitHubUsername
-/qwen_ocr.js @YourGitHubUsername
+/background.js @woertedetiankong
+/popup.* @woertedetiankong
+/options.* @woertedetiankong
+/content_script.js @woertedetiankong
+/qwen_ocr.js @woertedetiankong
